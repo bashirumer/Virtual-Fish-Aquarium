@@ -1,49 +1,61 @@
-Virtual Aquarium
-Overview
+# Virtual Aquarium
 
-The Virtual Aquarium is an interactive simulation built in Processing that demonstrates animation loops, event handling, classes, and physics-inspired behaviors.
+## Overview
+The Virtual Aquarium is an interactive simulation built in Processing that demonstrates animation loops, event handling, classes, and physics-inspired behaviors.  
 Users can feed fish, toggle between day/night modes, enable trails, and interact with fish that exhibit realistic wandering and avoidance behaviors.
 
 This project fulfills all rubric requirements for:
+- Realtime animation and interactivity
+- Modular and object-oriented code
+- Event-driven user input
+- Clean visuals and creativity
 
-Realtime animation and interactivity
+## Features
+- Fish Simulation: 20 fish objects with random wandering, hunger levels, and mouse avoidance.
+- Feeding Mechanism: Clicking drops food pellets that sink and attract nearby fish.
+- Day/Night Toggle: Press `D` to smoothly transition between day and night underwater lighting.
+- Trails Toggle: Press `T` to enable motion trails for a dynamic visual effect.
+- HUD & Buttons: Full-width top bar for information, plus bottom “Help” and “Home” buttons.
+- Multiple Screens: Welcome screen → Game screen → Return home seamlessly.
+- Help Overlay: Click Help to open instructions with a close (X) button.
+- Smooth Transitions: Fade-in/out effects and background color interpolation.
 
-Modular and object-oriented code
+## Setup Instructions
+1. Open Processing IDE (v4.x)
+2. Copy the full code from `VirtualAquarium.pde`
+3. Press Run
+4. Interact with the aquarium
 
-Event-driven user input
+### Requirements
+- Java mode enabled (default)
+- No external libraries required
 
-Clean visuals and creativity
+## Controls
+| Action | Key / Mouse | Description |
+|--------|--------------|--------------|
+| Drop food | Mouse click | Drops food pellets |
+| Fish flee | Mouse proximity | Fish avoid the cursor (predator effect) |
+| Toggle Day/Night | D | Switches lighting mode |
+| Toggle Trails | T | Enables or disables motion trails |
+| Clear all food | C | Removes all pellets |
+| Reset fish | R | Resets fish positions |
+| Toggle Help panel | H / Help button | Shows or hides instructions |
+| Return to Home | Home button | Goes back to the welcome screen |
+| Start simulation | ENTER | Begins the aquarium simulation |
 
-Features
+## Program Structure
 
-Fish Simulation: 20 fish objects with random wandering, hunger levels, and mouse avoidance.
+### Main Components
+- Fish Class: Encapsulates movement, steering forces (seek/flee), hunger, and rendering.
+- Food Class: Represents sinking food pellets with time-to-live logic.
 
-Feeding Mechanism: Clicking drops food pellets that sink and attract nearby fish.
+### UI Functions
+- drawTopBar() → Renders the top information panel
+- drawBottomButtons() → Displays “Help” and “Home” buttons
+- drawHelpOverlay() → Shows the Help instructions and close button
 
-Day/Night Toggle: Press D to smoothly transition between day and night underwater lighting.
-
-Trails Toggle: Press T to enable motion trails for a dynamic visual effect.
-
-HUD & Buttons: Full-width top bar for information, plus bottom “Help” and “Home” buttons.
-
-Multiple Screens: Welcome screen → Game screen → Return home seamlessly.
-
-Help Overlay: Click Help to open instructions with a close (X) button.
-
-Smooth Transitions: Fade-in/out effects and background color interpolation.
-
-Setup Instructions
-
-Open Processing IDE (v4.x)
-
-Copy the full code from VirtualAquarium.pde
-
-Press Run
-
-Interact with the aquarium!
-
-Requirements
-
-Java mode enabled (default)
-
-No external libraries required
+### State Machine
+```java
+final int WELCOME = 0;
+final int PLAY = 1;
+int appState = WELCOME;
